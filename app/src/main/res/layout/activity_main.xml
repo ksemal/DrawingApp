@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/FLDrawingView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/drawing_background"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@id/color_pallet_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/drawingBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg" />
+
+        <com.example.drawingapp.DrawingView
+            android:id="@+id/drawingView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:background="#80FFFFFF" />
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/color_pallet_1"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="5dp"
+        android:layout_marginStart="30dp"
+        android:background="@color/skin"
+        android:contentDescription="@string/color_pallet_skin"
+        android:onClick="changeBrushColor"
+        android:src="@drawable/pallet_swatch"
+        android:tag="@color/skin"
+        app:layout_constraintEnd_toStartOf="@id/color_pallet_2"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/FLDrawingView" />
+
+    <ImageButton
+        android:id="@+id/color_pallet_2"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="5dp"
+        android:background="@color/black"
+        android:contentDescription="@string/color_pallet_black"
+        android:onClick="changeBrushColor"
+        android:src="@drawable/pallet_swatch"
+        android:tag="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/color_pallet_1"
+        app:layout_constraintEnd_toStartOf="@id/color_pallet_3"
+        app:layout_constraintStart_toEndOf="@id/color_pallet_1"
+        app:layout_constraintTop_toTopOf="@id/color_pallet_1" />
+
+    <ImageButton
+        android:id="@+id/color_pallet_3"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="5dp"
+        android:background="@color/red"
+        android:contentDescription="@string/color_pallet_red"
+        android:onClick="changeBrushColor"
+        android:src="@drawable/pallet_swatch"
+        android:tag="@color/red"
+        app:layout_constraintBottom_toBottomOf="@id/color_pallet_1"
+        app:layout_constraintEnd_toStartOf="@id/color_pallet_4"
+        app:layout_constraintStart_toEndOf="@id/color_pallet_2"
+        app:layout_constraintTop_toTopOf="@id/color_pallet_1" />
+
+    <ImageButton
+        android:id="@+id/color_pallet_4"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="5dp"
+        android:background="@color/green"
+        android:contentDescription="@string/color_pallet_green"
+        android:onClick="changeBrushColor"
+        android:src="@drawable/pallet_swatch"
+        android:tag="@color/green"
+        app:layout_constraintBottom_toBottomOf="@id/color_pallet_1"
+        app:layout_constraintEnd_toStartOf="@id/color_pallet_5"
+        app:layout_constraintStart_toEndOf="@id/color_pallet_3"
+        app:layout_constraintTop_toTopOf="@id/color_pallet_1" />
+
+    <ImageButton
+        android:id="@+id/color_pallet_5"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="5dp"
+        android:background="@color/blue"
+        android:contentDescription="@string/color_pallet_blue"
+        android:onClick="changeBrushColor"
+        android:src="@drawable/pallet_swatch"
+        android:tag="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@id/color_pallet_1"
+        app:layout_constraintEnd_toStartOf="@id/color_pallet_6"
+        app:layout_constraintStart_toEndOf="@id/color_pallet_4"
+        app:layout_constraintTop_toTopOf="@id/color_pallet_1" />
+
+    <ImageButton
+        android:id="@+id/color_pallet_6"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="5dp"
+        android:background="@color/yellow"
+        android:contentDescription="@string/color_pallet_yellow"
+        android:onClick="changeBrushColor"
+        android:src="@drawable/pallet_swatch"
+        android:tag="@color/yellow"
+        app:layout_constraintBottom_toBottomOf="@id/color_pallet_1"
+        app:layout_constraintEnd_toStartOf="@id/color_pallet_7"
+        app:layout_constraintStart_toEndOf="@id/color_pallet_5"
+        app:layout_constraintTop_toTopOf="@id/color_pallet_1" />
+
+    <ImageButton
+        android:id="@+id/color_pallet_7"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="5dp"
+        android:background="@color/lollipop"
+        android:contentDescription="@string/color_pallet_lollipop"
+        android:onClick="changeBrushColor"
+        android:src="@drawable/pallet_swatch"
+        android:tag="@color/lollipop"
+        app:layout_constraintBottom_toBottomOf="@id/color_pallet_1"
+        app:layout_constraintEnd_toStartOf="@id/color_pallet_8"
+        app:layout_constraintStart_toEndOf="@id/color_pallet_6"
+        app:layout_constraintTop_toTopOf="@id/color_pallet_1" />
+
+    <ImageButton
+        android:id="@+id/color_pallet_8"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="5dp"
+        android:background="@color/random"
+        android:contentDescription="@string/color_pallet_random"
+        android:onClick="changeBrushColor"
+        android:src="@drawable/pallet_swatch"
+        android:tag="@color/random"
+        app:layout_constraintBottom_toBottomOf="@id/color_pallet_1"
+        app:layout_constraintEnd_toStartOf="@id/color_pallet_9"
+        app:layout_constraintStart_toEndOf="@id/color_pallet_7"
+        app:layout_constraintTop_toTopOf="@id/color_pallet_1" />
+
+    <ImageButton
+        android:id="@+id/color_pallet_9"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="5dp"
+        android:background="@color/white"
+        android:contentDescription="@string/color_pallet_white"
+        android:onClick="changeBrushColor"
+        android:src="@drawable/pallet_swatch"
+        android:tag="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/color_pallet_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/color_pallet_8"
+        app:layout_constraintTop_toTopOf="@id/color_pallet_1" />
+
+    <ImageButton
+        android:id="@+id/brush_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:contentDescription="@string/choose_brush_size"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_brush"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/gallery_icon"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/color_pallet_1" />
+
+    <ImageButton
+        android:id="@+id/gallery_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:contentDescription="@string/choose_background_image"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_gallery"
+        app:layout_constraintBottom_toBottomOf="@id/brush_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/brush_icon"
+        app:layout_constraintTop_toTopOf="@id/brush_icon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

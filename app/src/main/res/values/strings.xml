@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Drawing App</string>
+    <string name="brush_sm_btn">Small button size</string>
+    <string name="brush_md_btn">Medium button size</string>
+    <string name="brush_lg_btn">Large button size</string>
+    <string name="choose_brush_size">Choose brush size</string>
+    <string name="color_pallet_skin">Skin color</string>
+    <string name="color_pallet_black">Black color</string>
+    <string name="color_pallet_red">Red color</string>
+    <string name="color_pallet_green">Green color</string>
+    <string name="color_pallet_blue">Blue color</string>
+    <string name="color_pallet_yellow">Yellow color</string>
+    <string name="color_pallet_lollipop">Lollipop color</string>
+    <string name="color_pallet_random">Random color</string>
+    <string name="color_pallet_white">White color</string>
+    <string name="choose_background_image">Choose the background image</string>
+</resources>
