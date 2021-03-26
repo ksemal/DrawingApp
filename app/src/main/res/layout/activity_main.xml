@@ -24,7 +24,7 @@
             android:contentDescription="@null"
             android:importantForAccessibility="no"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg" />
+            android:visibility="gone" />
 
         <com.example.drawingapp.DrawingView
             android:id="@+id/drawingView"
@@ -175,9 +175,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="5dp"
+
         android:contentDescription="@string/choose_brush_size"
         android:scaleType="fitXY"
         android:src="@drawable/ic_brush"
+        android:tint="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/gallery_icon"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -192,6 +194,7 @@
         android:contentDescription="@string/choose_background_image"
         android:scaleType="fitXY"
         android:src="@drawable/ic_gallery"
+        android:tint="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="@id/brush_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/brush_icon"
