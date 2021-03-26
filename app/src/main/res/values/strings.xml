@@ -15,4 +15,5 @@
     <string name="color_pallet_white">White color</string>
     <string name="choose_background_image">Choose the background image</string>
     <string name="undo">Undo image drawing</string>
+    <string name="clear_image">Clear image</string>
 </resources>

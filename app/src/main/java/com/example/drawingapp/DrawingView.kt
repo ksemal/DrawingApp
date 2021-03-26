@@ -119,4 +119,9 @@ class DrawingView(context: Context?, attrs: AttributeSet?) : View(context, attrs
             invalidate()
         }
     }
+
+    fun clearView() {
+        mPaths.clear()
+        invalidate()
+    }
 }

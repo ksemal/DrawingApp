@@ -41,6 +41,14 @@ class MainActivity : AppCompatActivity() {
         undo_icon.setOnClickListener {
             drawingView.onClickUndo()
         }
+
+        clear_icon.setOnClickListener {
+            drawingBackground.run {
+                visibility = View.GONE
+                setImageDrawable(null)
+            }
+            drawingView.clearView()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
