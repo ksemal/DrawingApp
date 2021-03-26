@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
             showBrushSizeDialog()
         }
 
-
         gallery_icon.setOnClickListener {
             if (isReadStorageAllowed()) {
                 // code to add background image from storage files
@@ -37,6 +36,10 @@ class MainActivity : AppCompatActivity() {
             } else {
                 requestStoragePermission()
             }
+        }
+
+        undo_icon.setOnClickListener {
+            drawingView.onClickUndo()
         }
     }
 

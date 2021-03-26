@@ -196,8 +196,22 @@
         android:src="@drawable/ic_gallery"
         android:tint="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="@id/brush_icon"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/undo_icon"
         app:layout_constraintStart_toEndOf="@id/brush_icon"
+        app:layout_constraintTop_toTopOf="@id/brush_icon" />
+
+    <ImageButton
+        android:id="@+id/undo_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:contentDescription="@string/undo"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_undo"
+        android:tint="@color/purple_700"
+        app:layout_constraintBottom_toBottomOf="@id/brush_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gallery_icon"
         app:layout_constraintTop_toTopOf="@id/brush_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
