@@ -22,10 +22,10 @@ Drawing app alows you:
 ### Screenshots
 
 #### Main UI
-![choose brush size](img/draw.png)
+<img src="img/draw.png" alt="main UI" width="500"/>
 
 #### Choose brush size dialog
-![choose brush size](img/brush_size.png)
+<img src="img/brush_size.png" alt="choose brush size" width="500"/>
 
 #### Choose background image to draw on
-![choose brush size](img/bg_img.png)
+<img src="img/bg_img.png" alt="add background image" width="500"/>
