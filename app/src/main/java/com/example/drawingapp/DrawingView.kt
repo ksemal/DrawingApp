@@ -13,9 +13,7 @@ class DrawingView(context: Context?, attrs: AttributeSet?) : View(context, attrs
     internal inner class CustomPath(
         var color: Int,
         var brushThickness: Float
-    ) : Path() {
-
-    }
+    ) : Path()
 
     private var mCanvasBitmap: Bitmap? = null
     private var mDrawPaint: Paint? = null
