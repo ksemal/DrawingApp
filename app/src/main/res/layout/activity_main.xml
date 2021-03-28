@@ -223,8 +223,22 @@
         android:src="@drawable/ic_clear"
         android:tint="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="@id/brush_icon"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/save_icon"
         app:layout_constraintStart_toEndOf="@id/undo_icon"
+        app:layout_constraintTop_toTopOf="@id/brush_icon" />
+
+    <ImageButton
+        android:id="@+id/save_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:contentDescription="@string/save_image"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_save"
+        android:tint="@color/purple_700"
+        app:layout_constraintBottom_toBottomOf="@id/brush_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/clear_icon"
         app:layout_constraintTop_toTopOf="@id/brush_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

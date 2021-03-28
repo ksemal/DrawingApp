@@ -16,4 +16,6 @@
     <string name="choose_background_image">Choose the background image</string>
     <string name="undo">Undo image drawing</string>
     <string name="clear_image">Clear image</string>
+    <string name="save_image">Save image</string>
+    <string name="loader_text">Please wait...</string>
 </resources>

@@ -5,6 +5,10 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.media.MediaScannerConnection
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
@@ -13,8 +17,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_brush_size.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
 
 class MainActivity : AppCompatActivity() {
     private var previouslySelectedColorSwatch: ImageButton? = null
@@ -48,6 +60,15 @@ class MainActivity : AppCompatActivity() {
                 setImageDrawable(null)
             }
             drawingView.clearView()
+        }
+
+        save_icon.setOnClickListener {
+            if (isReadStorageAllowed()) {
+                BitmapAsyncTask(getBitMapFromView(FLDrawingView)).execute()
+            } else {
+                requestStoragePermission()
+                BitmapAsyncTask(getBitMapFromView(FLDrawingView)).execute()
+            }
         }
     }
 
@@ -160,6 +181,98 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
 
         return result == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun getBitMapFromView(view: View): Bitmap {
+        val returnedBitMap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(returnedBitMap)
+        val backgroundDrawable = view.background
+        if (backgroundDrawable != null) {
+            backgroundDrawable.draw(canvas)
+        } else {
+            canvas.drawColor(Color.WHITE)
+        }
+
+        view.draw(canvas)
+        return returnedBitMap
+    }
+
+    private inner class BitmapAsyncTask(val mBitmap: Bitmap) : ViewModel() {
+
+        // viewModel component calling coroutine
+        fun execute() = viewModelScope.launch {
+            onPreExecute()
+            val result = doInBackground()
+            onPostExecute(result)
+        }
+
+        private lateinit var mProgressDialog: Dialog
+
+        private fun onPreExecute() {
+            showProgressDialog()
+        }
+
+        // avoid blocking main thread with withContext(Dispatchers.IO)
+        private suspend fun doInBackground(): String = withContext(Dispatchers.IO) {
+            var result = ""
+            try {
+                val bytes = ByteArrayOutputStream()
+                mBitmap.compress(Bitmap.CompressFormat.PNG, 90, bytes)
+
+                // create a file to put the image to
+                val f =
+                    File(externalCacheDir?.absoluteFile.toString() + File.separator + "DrawingApp_" + System.currentTimeMillis() / 1000 + ".png")
+                val fos = FileOutputStream(f)
+                fos.write(bytes.toByteArray())
+                fos.close()
+                result = f.absolutePath
+            } catch (e: Exception) {
+                result = ""
+                e.printStackTrace()
+            }
+
+            return@withContext result
+        }
+
+        private fun onPostExecute(result: String) {
+            cancelDialog()
+            if (result.isNotEmpty()) {
+                Toast.makeText(
+                    this@MainActivity,
+                    "File Saved Successfully : $result",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                Toast.makeText(
+                    this@MainActivity,
+                    "Something went wrong while saving file",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            MediaScannerConnection.scanFile(this@MainActivity, arrayOf(result), null) { _, uri ->
+                val shareIntent = Intent()
+                shareIntent.action = Intent.ACTION_SEND
+                shareIntent.putExtra(Intent.EXTRA_STREAM, uri)
+                shareIntent.type = "image/png"
+                startActivity(
+                    Intent.createChooser(
+                        shareIntent, "Share"
+                    )
+                )
+            }
+        }
+
+        private fun showProgressDialog() {
+            mProgressDialog = Dialog(this@MainActivity)
+            mProgressDialog.setContentView(R.layout.dialog_custom_progress)
+            mProgressDialog.show()
+        }
+
+        private fun cancelDialog() {
+            mProgressDialog.dismiss()
+        }
+
     }
 
     companion object {
